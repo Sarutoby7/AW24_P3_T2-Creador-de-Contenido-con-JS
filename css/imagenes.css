@@ -1,0 +1,14 @@
+.modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.img-opcion {
+    width: 30%;
+    margin-bottom: 10px;
+}
+
+.img-thumbnail {
+    height: auto;
+}

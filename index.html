@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Tarjetas</title>
+    <link rel="stylesheet" href="css/Estilorocks.css" type="text/css"/>
+    <link rel="stylesheet" href="css/imagenes.css" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="#">Generador de Tarjetas</a>
+        </h1>
+    </header>
+
+    <section class="row container-fluid" id="todo">
+        <aside id="lateral" class="col-sm-3">
+            <select id="temas" onchange="mostrarModal();"> 
+                <option value="0" selected>Seleccione...</option>
+                <option value="cumpleaños">Cumpleaños</option> 
+                <option value="boda">Boda</option>
+                <option value="aniversario">Aniversario</option>
+            </select>
+        </aside>
+
+        <section id="principal" class="col-sm-9">
+            <div id="tarjeta" class="contenedor" style="display:none;">
+                <canvas id="canvas" width="600" height="400"></canvas>
+                
+                <div class="form-group">
+                    <label for="colorFondo">Color de Fondo:</label>
+                    <input type="color" id="colorFondo" value="#ffffff" onchange="cambiarColorFondo();">
+                </div>
+                
+                <div class="form-group">
+                    <label for="colorTexto">Color del Texto:</label>
+                    <input type="color" id="colorTexto" value="#000000" onchange="cambiarColorTexto();">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tipografia">Tipografía:</label>
+                    <select id="tipografia" onchange="cambiarTamanoTexto();">
+                        <option value="Arial">Arial</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tamanoTexto">Tamaño del Texto:</label>
+                    <input type="number" id="tamanoTexto" value="30" min="10" max="100" onchange="cambiarTamanoTexto();">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <input type="text" id="mensaje" placeholder="Escribe tu mensaje" oninput="actualizarMensaje();">
+                </div>
+        
+                <div class="form-group">
+                    <label for="nomRemi">Nombre del Remitente:</label>
+                    <input type="text" id="nomRemi" placeholder="Escribe tu nombre" oninput="actualizarMensaje();">
+                </div>
+                
+                <button onclick="exportarPNG()">Exportar como PNG</button>
+            </div>
+        </section>        
+    </section>
+
+    <div class="modal fade" id="modalImagenes" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Elige una Imagen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="img/cumple/invitacion1c.png" class="img-thumbnail img-opcion" onclick="seleccionarImagen('img/cumple/invitacion1c.png');">
+                    <img src="img/cumple/invitacion2c.png" class="img-thumbnail img-opcion" onclick="seleccionarImagen('img/cumple/invitacion2c.png');">
+                    <img src="img/cumple/invitacion3c.png" class="img-thumbnail img-opcion" onclick="seleccionarImagen('img/cumple/invitacion3c.png');">
+                    
+                    <img src="img/boda/boda1.png" class="img-thumbnail img-opcion" onclick="seleccionarImagen('img/boda/boda1.png');">
+                    <img src="img/boda/boda2.png" class="img-thumbnail img-opcion" onclick="seleccionarImagen('img/boda/boda2.png');">
+                    <img src="img/boda/boda3.png" class="img-thumbnail img-opcion" onclick="seleccionarImagen('img/boda/boda3.png');">
+                    
+                    <img src="img/aniver/ani1.png" class="img-thumbnail img-opcion" onclick="seleccionarImagen('img/aniver/ani1.png');">
+                    <img src="img/aniver/ani2.png" class="img-thumbnail img-opcion" onclick="seleccionarImagen('img/aniver/ani2.png');">
+                    <img src="img/aniver/ani3.png" class="img-thumbnail img-opcion" onclick="seleccionarImagen('img/aniver/ani3.png');">
+                </div>                               
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h6>Desarrollado por Amulek el màs programador de la UTL</h6>
+    </footer>
+
+    <script src="js/funciones.js"></script>
+</body>
+</html>
